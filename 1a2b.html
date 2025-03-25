@@ -1,0 +1,139 @@
+<head>
+  <meta charset="utf-8">
+    <title>
+      1A2B輔助器
+    </title>
+    <script Language="JavaScript">
+      <!--
+        var allPossible=[];
+        var userInputNumberList=[];
+        var userInputResultOfAList=[];
+        var userInputResultOfBList=[];
+        function appendTheTest(){
+          var userInputNumber=document.getElementById('userInputNumber').value;
+          userInputNumberList.push(String(userInputNumber));
+          var userInputResultOfA=document.getElementById('userInputResultOfA').value;
+          userInputResultOfAList.push(userInputResultOfA);
+          var userInputResultOfB=document.getElementById('userInputResultOfB').value;
+          userInputResultOfBList.push(userInputResultOfB);
+          var CriteriaList=document.createElement('table');
+          document.getElementById("FilterCriteriaList").appendChild(CriteriaList);
+          var Criteria=document.createElement('td');
+          CriteriaList.appendChild(Criteria);
+          var FilterCriteria=document.createElement('h2');
+          FilterCriteria.style.marginBottom=0;
+          FilterCriteria.style.marginTop=0;
+          Criteria.appendChild(FilterCriteria);
+          FilterCriteria.innerHTML=userInputNumber;
+          var Criteria=document.createElement('td');
+          CriteriaList.appendChild(Criteria);
+          var FilterResult=document.createElement('h1');
+          FilterResult.style.marginBottom=0;
+          FilterResult.style.marginTop=0;
+          Criteria.appendChild(FilterResult);
+          FilterResult.innerHTML=String(userInputResultOfA)+"A"+String(userInputResultOfB)+"B";
+        }
+        function clearPage(){
+          allPossible=[]
+          userInputNumberList=[];
+          userInputResultOfAList=[];
+          userInputResultOfBList=[];
+          Unqualified=[];
+          var FilterCriteriaList=document.getElementById("FilterCriteriaList");
+          FilterCriteriaList.innerHTML="<h1>條件列表</h1>";
+          var FilterResultList=document.getElementById("FilterResultList");
+          FilterResultList.innerHTML="<h1>測試結果</h1>";
+          document.getElementById("randomByFilterResultList").value="隨機抽出一個可能的答案";
+          for(var i=0;i<10;i++){
+            for(var j=0;j<10;j++){
+              for(var k=0;k<10;k++){
+                for(var l=0;l<10;l++){
+                  if(i!=j && i!=k && i!=l && j!=k && j!=l && k!=l)
+                    {allPossible.push(String(i)+String(j)+String(k)+String(l));}
+                }
+              }
+            }
+          }
+        }
+        var Unqualified=[];
+        function calculate(){
+          var FilterResultList=document.getElementById("FilterResultList");
+          FilterResultList.innerHTML="<h1>測試結果</h1>";
+          var ResultList=document.getElementById("FilterResultList");
+          for(var i=0;i<allPossible.length;i++){
+            for(var j=0;j<userInputNumberList.length;j++){
+              var a=0;
+              var b=0;
+              for(var k=0;k<4;k++){
+                for(var l=0;l<4;l++){
+                  if(allPossible[i][k]==userInputNumberList[j][l]){
+                    if(k==l)
+                    {a+=1;}
+                    else
+                    {b+=1;}
+                  }
+                }
+              }
+              if(a!=userInputResultOfAList[j] || b!=userInputResultOfBList[j]){
+                Unqualified.push(i);
+                break
+              }
+            }
+          }
+          for(var i=0;i<allPossible.length;i++){
+            if(Unqualified.indexOf(i)+1==0){
+              var FilterCriteria=document.createElement('h2');
+              FilterCriteria.style.marginBottom=0;
+              FilterCriteria.style.marginTop=0;
+              ResultList.appendChild(FilterCriteria);
+              FilterCriteria.innerHTML=allPossible[i];
+            }
+          }
+        }
+        function getRandomByFilterResultList(){
+          var i=Math.floor(Math.random()*allPossible.length);
+          while(Unqualified.indexOf(i)+1){
+            i=Math.floor(Math.random()*allPossible.length);
+          }
+          document.getElementById("randomByFilterResultList").value=String(allPossible[i]);
+        }
+        window.setTimeout(function(){clearPage();},0);
+      -->
+    </script>
+</head>
+<body>
+  <dir style="padding-left: 0px;font-size:30px;margin-bottom: 0px;">
+    請輸入測試數字：<input type="number" placeholder="ex:1234" id="userInputNumber"/>
+    <br>
+    請輸入測試結果A的數量：<input type="number" placeholder="ex:1" id="userInputResultOfA"/>
+    <br>
+    請輸入測試結果B的數量：<input type="number" placeholder="ex:2" id="userInputResultOfB"/>
+    <br>
+    <table>
+      <td>
+        <input style="font-size:30px;" type="button" value="加入測資" onclick="appendTheTest()"/>
+      </td>
+      <td>
+        <input style="font-size:30px;" type="button" value="開始計算" onclick="calculate()"/>
+      </td>
+      <td>
+        <input style="font-size:30px;" type="button" value="清除" onclick="clearPage()"/>
+      </td>
+    </table>
+  </dir>
+  <input id="randomByFilterResultList" style="font-size:30px;" type="button" value="隨機抽出一個可能的答案" onclick="getRandomByFilterResultList()"/>
+  <table>
+  <td valign="top">
+  <dir id="FilterCriteriaList" style="padding-left: 0px;">
+  </dir>
+  </td>
+  <td valign="top">
+  <dir id="FilterResultList" style="padding-left:10px;">
+  </dir>
+  </td>
+  </table>
+</body>
+
+
+
+
